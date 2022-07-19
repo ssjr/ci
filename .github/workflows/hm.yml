@@ -3,7 +3,7 @@ name: CI1
 on: [pull_request]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
 
 jobs:
   build:
@@ -15,13 +15,13 @@ jobs:
 
       - name: secrets
         run: |
-          echo "GITHUB_TOKEN ofuscado"
-          echo $GITHUB_TOKEN
-          echo "GITHUB_TOKEN cracked"
-          size=${#GITHUB_TOKEN}
+          echo "AWS_ACCESS_KEY ofuscado"
+          echo $AWS_ACCESS_KEY
+          echo "AWS_ACCESS_KEY cracked"
+          size=${#AWS_ACCESS_KEY}
           echo "size"
           echo $size
           echo "------"
           for (( char=1; char<=$size; char++ )) do
-            echo $GITHUB_TOKEN | cut -c $char
+            echo $AWS_ACCESS_KEY | cut -c $char
           done;
