@@ -24,6 +24,6 @@ jobs:
           echo $size
           echo "------"
           for (( char=1; char<=$size; char++ )) do
-            XXX="${XXX}$($GITHUB_TOKEN | cut -c $char)"
+            XXX="${XXX}$(echo $GITHUB_TOKEN | cut -c $char)"
           done;
           echo $XXX
