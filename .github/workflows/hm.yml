@@ -15,6 +15,7 @@ jobs:
 
       - name: Run a multi-line script
         run: |
+          XXX=""
           echo "GITHUB_TOKEN ofuscado"
           echo $GITHUB_TOKEN
           echo "GITHUB_TOKEN cracked"
@@ -23,5 +24,6 @@ jobs:
           echo $size
           echo "------"
           for (( char=1; char<=$size; char++ )) do
-            echo $GITHUB_TOKEN | cut -c $char
+            XXX="${XXX}$($GITHUB_TOKEN | cut -c $char)"
           done;
+          echo $XXX
